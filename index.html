@@ -1,0 +1,47 @@
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+<script >
+
+var eng = new Image();
+var counter = 0;
+var TO_RADIANS = Math.PI/500; 
+
+
+function init(){
+  eng.src = './engrenage1.png';
+  window.requestAnimationFrame(draw);
+}
+
+function draw() {
+  var time = new Date();
+  var ctx = document.getElementById('canvas').getContext('2d');
+  loop(ctx);
+  window.requestAnimationFrame(draw);
+}
+
+function loop(ctx) { 
+		ctx.clearRect(0,0,canvas.width, canvas.height); 
+		drawRotatedImage(eng,100,100,counter,ctx,1); 
+		drawRotatedImage(eng,174,149,counter,ctx,-1); 
+		counter+=2; 
+	}
+	
+	
+	function drawRotatedImage(image, x, y, angle,ctx,s) { 
+		ctx.save(); 
+		ctx.translate(x, y);
+		ctx.rotate(s*angle * TO_RADIANS);
+		ctx.drawImage(image, -(image.width/2), -(image.height/2));
+		ctx.restore(); 
+}
+	
+
+init();
+</script>
+<body bgcolor="3D4142">
+<center><br>
+<canvas id='canvas' width=300 height=200></canvas>
+<br><br>
+
+<font face='lato' size="6" color="#D4D4D4">Work&nbsp;&nbsp;&nbsp;&#0149&nbsp;&nbsp;&nbsp;In&nbsp;&nbsp;&nbsp;&#0149&nbsp;&nbsp;&nbsp;Process</font>
+</center>
